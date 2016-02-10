@@ -1,0 +1,54 @@
+<!doctype html>
+<html >
+  <head>
+   <script src="https://code.angularjs.org/1.4.2/angular.js"></script>
+<script src="https://code.angularjs.org/1.4.2/angular-route.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+ <script>
+ var app = angular.module('myApp', ['ngRoute']);
+	app.config(function($routeProvider) {
+	  $routeProvider
+	  .when('/', {
+		controller: 'MyController',
+		templateUrl: 'teamplate.html'
+	  })
+	  
+	  $routeProvider
+	  .when('/page2', {
+		controller: 'Secondcontroller',
+		templateUrl: 'teamplate.html'
+	  })
+	  .otherwise({redirectTo: '/'});
+	});
+	
+	app.controller('MyController', function($scope) {
+	  $scope.person = {
+		name: "Ari Lerner"
+	  };
+	  $scope.names = [
+		{Id: 1,FirstName: 'asdf',LastName: 'asdfsadf',Email: 'as@a.com',Age: 18},
+		{Id: 2,FirstName: 'asdf',LastName: 'asdfsadf',Email: 'as@a.com',Age: 18},
+		{Id: 3,FirstName: 'ivan',LastName: 'asdfsadf',Email: 'as@a.com',Age: 45},
+		{Id: 5,FirstName: 'valera',LastName: 'asdfsadf',Email: 'as@a.com',Age: 20}
+	  ]
+	});
+	app.controller('Secondcontroller', function($scope) {
+	  $scope.person = {
+		name: "Ari Lerner"
+	  };
+	  $scope.names = [
+		{Id: 6,FirstName: 'asdf',LastName: 'asdfsadf',Email: 'as@a.com',Age: 18},
+		{Id: 7,FirstName: 'asdf',LastName: 'asdfsadf',Email: 'as@a.com',Age: 18},
+		{Id: 8,FirstName: 'ivan',LastName: 'asdfsadf',Email: 'as@a.com',Age: 45},
+		{Id: 9,FirstName: 'valera',LastName: 'asdfsadf',Email: 'as@a.com',Age: 20}
+	  ]
+	});
+	
+ </script>
+ </head>
+  <body > 
+    <div ng-app="myApp" ng-controller="MyController" >
+		<div ng-view></div>
+    </div>
+  </body>
+</html>
